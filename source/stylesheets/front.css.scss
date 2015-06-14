@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+body {
+  text-align: center;
+  font-family: sans-serif;
+  background: #F5F6F6;
+}
+
+#mainlogo {
+  width: 40em;
+  margin-bottom: 2em;
+}
+
+.welcome {
+	padding-top: 10em;
+  background: #F5F6F6;
+  svg{
+    width: 12em;
+	}
+
+}
+
+.welcome h1 {
+  color: #414141;
+  font-weight: 900;
+  font-size: 2.2em;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  margin: 0;
+  }

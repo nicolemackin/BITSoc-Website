@@ -1,0 +1,30 @@
+body {
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-color: #f69a81;
+
+  .flex {
+    display: flex;
+    flex-flow: row wrap;
+    >.column{
+      padding:2em;
+
+      >.exec{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        >img{
+
+          width:10em;
+          height: 10em;
+          padding-bottom:1em;
+          padding-right: 1em;
+        }
+        >.exectxt{
+          flex: 1;
+          min-width: 3em;
+        }
+      }
+    }
+  }
+}

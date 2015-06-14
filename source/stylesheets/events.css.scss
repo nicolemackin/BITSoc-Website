@@ -1,0 +1,30 @@
+body {
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-color: #e88598;
+  p{
+  	color: #414141;
+    font-size: .8em;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .flex {
+    display: flex;
+    flex-flow: row wrap;
+
+    >.column{
+      padding:2em;
+      flex: 1;
+      min-width: 20em;
+
+      >iframe{
+        height: 20em;
+        width: 100%;
+
+      }
+
+
+    }
+  }
+
+}

@@ -1,0 +1,23 @@
+body {
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-color: #74c8d6;
+  p{
+  	color: #414141;
+    font-size: .8em;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .flex {
+    display: flex;
+    flex-flow: row wrap;
+
+
+    >.column{
+      padding:2em;
+      max-width: 20em;
+
+
+    }
+  }
+}

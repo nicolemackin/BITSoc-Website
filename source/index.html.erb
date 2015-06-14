@@ -1,0 +1,18 @@
+---
+title: BITSoc
+layout: base
+---
+
+<% content_for :head do %>
+  <%= stylesheet_link_tag "front", "all" %>
+<% end %>
+
+<div class="welcome zoom">
+
+  <%= partial :logo %>
+  <h1>The Carleton BIT Society</h1>
+  <p class="doc">
+    <%= link_to "EXECS", "execs.html" %><%= link_to "BITIZENSHIP", "bitizenship.html" %>
+    <%= link_to "EVENTS", "events.html" %>
+  </p><!-- .doc -->
+</div><!-- .welcome -->

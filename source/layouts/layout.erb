@@ -1,0 +1,22 @@
+<% wrap_layout :base do %>
+
+  <nav>
+      <%= partial :bitsoclogo %>
+  		<ul class="chrome">
+  			<li><%= link_to "EXECS", "execs.html" %></li>
+  			<li><%= link_to "BITIZENSHIP", "bitizenship.html" %></li>
+  			<li><%= link_to "EVENTS", "events.html" %></li>
+  		</ul>
+  </nav>
+
+  <div class="main">
+    <%= yield %>
+  </div>
+
+  <footer>
+  	<ul class="chrome">
+  		<li>BITSoc || 140 Azrieli Pavilion, Carleton University</li>
+  	</ul>
+  </footer>
+
+<% end %>
