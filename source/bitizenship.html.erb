@@ -5,32 +5,36 @@ title: Bitizenship
 
 <h1>Bitizenship</h1>
 
-<div class="flex">
+<div class="flex" ng-controller="BitizenCtrl">
 	<div class="column">
     <h3>Become a Bitizen</h3>
-    <form>
-      Stream <label><input type="radio" name="stream" value="plt">PLT</label>
-      <label><input type="radio" name="stream" value="net">NET</label>
-      <label><input type="radio" name="stream" value="net">IMD</label><br>
+    <form method="POST" ng-submit="submission() && false">
+      Stream <label><input type="radio" name="stream" ng-model="bitizen.stream" value="plt">PLT</label>
+      <label><input type="radio" name="stream" ng-model="bitizen.stream" value="net">NET</label>
+      <label><input type="radio" name="stream" ng-model="bitizen.stream" value="net">IMD</label><br>
 
       Name <input type='text'></input></br>
       Student # <input type='number'></input></br>
-      Email <input type='email'></input></br>
+      Email <input type='email' name="email" ng-model="bitizen.email"></input></br>
       Program Year
-      <label><input type="radio" name="year" value="1">1st</label>
-      <label><input type="radio" name="year" value="2">2nd</label>
-      <label><input type="radio" name="year" value="3">3rd</label>
-      <label><input type="radio" name="year" value="4">4th</label>
-      <label><input type="radio" name="year" value="other">Other</label><br>
+      <label><input type="radio" name="year" ng-model="bitizen.year" value="1">1st</label>
+      <label><input type="radio" name="year" ng-model="bitizen.year" value="2">2nd</label>
+      <label><input type="radio" name="year" ng-model="bitizen.year" value="3">3rd</label>
+      <label><input type="radio" name="year" ng-model="bitizen.year" value="4">4th</label>
+      <label><input type="radio" name="year" ng-model="bitizen.year" value="other">Other</label><br>
 
       Semesters
-      <label><input type="radio" name="payment" value="1">One ($5)</label>
-      <label><input type="radio" name="year" value="2">Two ($10)</label><br>
+      <label><input type="radio" name="payment" ng-model="bitizen.payment" value="1">One ($5)</label>
+      <label><input type="radio" name="year" ng-model="bitizen.year" value="2">Two ($10)</label><br>
       *Provide payment to one of the execs in the lounge to complete the sign up!
+
+			<textarea name="message" ng-model="bitizen.message"></textarea>
     </br>
 
-      <button type="Submit">Apply for Bitizenship </button>
+      <input type="submit">Apply for Bitizenship </button>
     </form>
+    <p>{{bitizen.stream}}</p>
+    <p>{{bitizen.email}}</p>
   </div>
 
 	<div class="column">
@@ -50,3 +54,49 @@ title: Bitizenship
     </ul>
   </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+<script src="//cdn.jsdelivr.net/keen.js/3.2.6/keen.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var client = new Keen({
+		projectId: "5581a11590e4bd7a94d42f66", // String (required always)
+		writeKey: "a3af6076d855507c8d9d85061f5bb0562533b8881d764ae88c2424aa597e509cd32002d3ff6d46ba0028805db6f5779c9a89f2ceabf16eea208d032b82f9dc0d22f701e5a167238a6207f346ab2f228a66a1c5a4451be8c05d80549273a6cad0055ad7be7ef5be06bd9d1b080dba56d4",   // String (required for sending data)
+		readKey: "0de2e56bf8412d9cfd3a1483f4e2f444ecfd9e7b8a4e9059c400e303c15d7dce7297689b72fde977bd07afb884d3461e4be471820717b39ab594c29228b6b11eab215495a4b7ec0403dcdbeb5d2ed18078725557dc24be5e930f21916cb0b9c674b8c17a3375b75be0da2aa448dfa404"      // String (required for querying data)
+
+		// protocol: "https",         // String (optional: https | http | auto)
+		// host: "api.keen.io/3.0",   // String (optional)
+		// requestType: "jsonp"       // String (optional: jsonp, xhr, beacon)
+	});
+
+	var bitizenEvent = {
+
+		referrer: document.referrer,
+		keen: {
+			timestamp: new Date().toISOString()
+		}
+	};
+
+	var app = angular.module('app', []);
+
+    app.controller('BitizenCtrl', ['$scope', function($scope) {
+      $scope.bitizen = {
+        stream: "",
+        email: "",
+        payment: "",
+        message: "",
+        year:""
+      }
+      $scope.submission = function() {
+      	console.log($scope.bitizen);
+        client.addEvent("bitizens", angular.extend({}, $scope.bitizen), function(err, res) {
+        	if(!err) {
+        		alert("Thanks for your submission!");
+        		console.log(res);
+        	}
+        	else
+        		alert(err);
+        });
+      }
+    }]);
+
+</script>
